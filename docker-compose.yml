@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  cid:
+    build: .
+    ports:
+      - "1880:1880"
+    volumes:
+      - /home/pi/ci-dashboard/mongodb
+
+  mongodb:
+    image: mongo:2.4
+    restart: always
+    volumes:
+      - /home/pi/ci-dashboard/mongodb
+
