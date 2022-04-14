@@ -1,16 +1,19 @@
-version: '3.1'
+red: 
+  build: .
+  ports:
+    - "1880:1880"
+  volumes:
+    - /home/pi/kist/ci-infrastructure/data:/data
+  links: 
+    - mongodb
+  restart: always
 
-services:
-  cid:
-    build: .
-    ports:
-      - "1880:1880"
-    volumes:
-      - /home/pi/ci-dashboard/mongodb
-
-  mongodb:
-    image: mongo:2.4
-    restart: always
-    volumes:
-      - /home/pi/ci-dashboard/mongodb
-
+mongodb:
+  image: mongo:4.2
+  ports:
+    - "27017:27017"
+  volumes:
+    - /home/pi/kist/ci-infrastructure/mongodb:/data/db 
+  environment:
+    MONGO_INITDB_DATABASE: sensorData
+  restart: always  
