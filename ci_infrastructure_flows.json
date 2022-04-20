@@ -1,0 +1,2558 @@
+[
+    {
+        "id": "8f78413c55dd317b",
+        "type": "tab",
+        "label": "Sensor1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a1d5c5a393e86ca9",
+        "type": "tab",
+        "label": "Sensor2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d2a14009d0ec587f",
+        "type": "tab",
+        "label": "Sensor 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5e3bd47c97ad722a",
+        "type": "tab",
+        "label": "Sensor4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "caf9b1d53366b064",
+        "type": "tab",
+        "label": "Sensor5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "94a313103002b37d",
+        "type": "tab",
+        "label": "Sensor6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "17d848535538c0fe",
+        "type": "tab",
+        "label": "Sensor7",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "76edc5fab097c7f1",
+        "type": "tab",
+        "label": "Sensor8",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5bf7c85ec0a3b433",
+        "type": "tab",
+        "label": "Sensor9",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a7b5cc95f8620d66",
+        "type": "tab",
+        "label": "Sensor10",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7573a1fd531a158e",
+        "type": "tab",
+        "label": "Sensor11",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cba21b1d36b4de43",
+        "type": "tab",
+        "label": "Sensor12",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "51f48c99c51474e3",
+        "type": "tab",
+        "label": "Sensor13",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e7bfdaac2eb60910",
+        "type": "tab",
+        "label": "Sensor14",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2444635c860dbf48",
+        "type": "mongodb",
+        "hostname": "ci-infrastructure_mongodb_1",
+        "topology": "direct",
+        "connectOptions": "",
+        "port": "27017",
+        "db": "SensorData",
+        "name": ""
+    },
+    {
+        "id": "8042d8a1eebf04bf",
+        "type": "mqtt-broker",
+        "name": "Sensoren",
+        "broker": "eu1.cloud.thethings.network",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "acc8478747104d4b",
+        "type": "mongodb out",
+        "z": "8f78413c55dd317b",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area1 (save)",
+        "collection": "Area1",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 630,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "09fb700e6dd8df1c",
+        "type": "mongodb in",
+        "z": "8f78413c55dd317b",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area1 data",
+        "collection": "Area1",
+        "operation": "find",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "1b4a364efa256689"
+            ]
+        ]
+    },
+    {
+        "id": "206150e68b5b737d",
+        "type": "http in",
+        "z": "8f78413c55dd317b",
+        "name": "(get) data1",
+        "url": "/data1",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 120,
+        "wires": [
+            [
+                "09fb700e6dd8df1c"
+            ]
+        ]
+    },
+    {
+        "id": "b8aa436ba750aa35",
+        "type": "http response",
+        "z": "8f78413c55dd317b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2c04665173952835",
+        "type": "mqtt in",
+        "z": "8f78413c55dd317b",
+        "name": "Sensor1",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b0020db41/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 280,
+        "wires": [
+            [
+                "51073763c0ca8781",
+                "9d79ec4f7c38a1f5"
+            ]
+        ]
+    },
+    {
+        "id": "51073763c0ca8781",
+        "type": "debug",
+        "z": "8f78413c55dd317b",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9d79ec4f7c38a1f5",
+        "type": "function",
+        "z": "8f78413c55dd317b",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 1\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at,\n\t\tSpeciality: \"humidity\"\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "7dea36b9e1caf660",
+                "acc8478747104d4b"
+            ]
+        ]
+    },
+    {
+        "id": "7dea36b9e1caf660",
+        "type": "debug",
+        "z": "8f78413c55dd317b",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "73af801f42a5dce6",
+        "type": "debug",
+        "z": "8f78413c55dd317b",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1b4a364efa256689",
+        "type": "function",
+        "z": "8f78413c55dd317b",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 120,
+        "wires": [
+            [
+                "b8aa436ba750aa35",
+                "73af801f42a5dce6"
+            ]
+        ]
+    },
+    {
+        "id": "208e4ff53d45a199",
+        "type": "mongodb out",
+        "z": "a1d5c5a393e86ca9",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area2 (save)",
+        "collection": "Area2",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 650,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "0e11d2ab8b6b8759",
+        "type": "mongodb in",
+        "z": "a1d5c5a393e86ca9",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area2 data",
+        "collection": "Area2",
+        "operation": "find",
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "8273f380e182dcfc"
+            ]
+        ]
+    },
+    {
+        "id": "dff1022ec4af3d20",
+        "type": "http in",
+        "z": "a1d5c5a393e86ca9",
+        "name": "(get) data2",
+        "url": "/data2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 240,
+        "wires": [
+            [
+                "0e11d2ab8b6b8759"
+            ]
+        ]
+    },
+    {
+        "id": "c7a4056e76c81895",
+        "type": "mqtt in",
+        "z": "a1d5c5a393e86ca9",
+        "name": "Sensor2",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b002109bd/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 400,
+        "wires": [
+            [
+                "cf31604f1455682e",
+                "757eb2dfccf1982f"
+            ]
+        ]
+    },
+    {
+        "id": "f511c1ebdfd64f54",
+        "type": "http response",
+        "z": "a1d5c5a393e86ca9",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "757eb2dfccf1982f",
+        "type": "debug",
+        "z": "a1d5c5a393e86ca9",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "cf31604f1455682e",
+        "type": "function",
+        "z": "a1d5c5a393e86ca9",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 2\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 400,
+        "wires": [
+            [
+                "ee6e04d75090463f",
+                "208e4ff53d45a199"
+            ]
+        ]
+    },
+    {
+        "id": "ee6e04d75090463f",
+        "type": "debug",
+        "z": "a1d5c5a393e86ca9",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "849250bf62463ecc",
+        "type": "debug",
+        "z": "a1d5c5a393e86ca9",
+        "name": "database Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "8273f380e182dcfc",
+        "type": "function",
+        "z": "a1d5c5a393e86ca9",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 240,
+        "wires": [
+            [
+                "f511c1ebdfd64f54",
+                "849250bf62463ecc"
+            ]
+        ]
+    },
+    {
+        "id": "6723630ed8dab2c5",
+        "type": "mongodb out",
+        "z": "d2a14009d0ec587f",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area3 (save)",
+        "collection": "Area3",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 630,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "e82b4cf3df2b16fe",
+        "type": "mongodb in",
+        "z": "d2a14009d0ec587f",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area3 data",
+        "collection": "Area3",
+        "operation": "find",
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "405404158971100f"
+            ]
+        ]
+    },
+    {
+        "id": "127d5f13c696960e",
+        "type": "http in",
+        "z": "d2a14009d0ec587f",
+        "name": "(get) data3",
+        "url": "/data3",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 360,
+        "wires": [
+            [
+                "e82b4cf3df2b16fe"
+            ]
+        ]
+    },
+    {
+        "id": "6f6d8cb5c05a5934",
+        "type": "mqtt in",
+        "z": "d2a14009d0ec587f",
+        "name": "Sensor3",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00229eeb/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 520,
+        "wires": [
+            [
+                "f53228a5bb1377ed",
+                "62575cb45d48938a"
+            ]
+        ]
+    },
+    {
+        "id": "dbc517ca04ad9508",
+        "type": "http response",
+        "z": "d2a14009d0ec587f",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "62575cb45d48938a",
+        "type": "debug",
+        "z": "d2a14009d0ec587f",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f53228a5bb1377ed",
+        "type": "function",
+        "z": "d2a14009d0ec587f",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 3\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 520,
+        "wires": [
+            [
+                "143e0adab133de46",
+                "6723630ed8dab2c5"
+            ]
+        ]
+    },
+    {
+        "id": "143e0adab133de46",
+        "type": "debug",
+        "z": "d2a14009d0ec587f",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "514e85714bbb8ef8",
+        "type": "debug",
+        "z": "d2a14009d0ec587f",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "405404158971100f",
+        "type": "function",
+        "z": "d2a14009d0ec587f",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 360,
+        "wires": [
+            [
+                "dbc517ca04ad9508",
+                "514e85714bbb8ef8"
+            ]
+        ]
+    },
+    {
+        "id": "2f3c9a77a3ae985c",
+        "type": "mongodb in",
+        "z": "5e3bd47c97ad722a",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area4 data",
+        "collection": "Area4",
+        "operation": "find",
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "a63cbe769b289c14"
+            ]
+        ]
+    },
+    {
+        "id": "7acabc6074e8a5b1",
+        "type": "http in",
+        "z": "5e3bd47c97ad722a",
+        "name": "(get) data4",
+        "url": "/data4",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 320,
+        "wires": [
+            [
+                "2f3c9a77a3ae985c"
+            ]
+        ]
+    },
+    {
+        "id": "f2aab70e1366d604",
+        "type": "mqtt in",
+        "z": "5e3bd47c97ad722a",
+        "name": "Sensor4 ",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f116ec/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 480,
+        "wires": [
+            [
+                "69b080fbb1895eeb",
+                "338ec40a2ad0a79b"
+            ]
+        ]
+    },
+    {
+        "id": "064d90f302706711",
+        "type": "mongodb out",
+        "z": "5e3bd47c97ad722a",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area4 (save)",
+        "collection": "Area4",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 630,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "fa42f04b8bd1914e",
+        "type": "http response",
+        "z": "5e3bd47c97ad722a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "69b080fbb1895eeb",
+        "type": "debug",
+        "z": "5e3bd47c97ad722a",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "338ec40a2ad0a79b",
+        "type": "function",
+        "z": "5e3bd47c97ad722a",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 4\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 480,
+        "wires": [
+            [
+                "3dac818046b872e9",
+                "064d90f302706711"
+            ]
+        ]
+    },
+    {
+        "id": "3dac818046b872e9",
+        "type": "debug",
+        "z": "5e3bd47c97ad722a",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "763e3994746d6a66",
+        "type": "debug",
+        "z": "5e3bd47c97ad722a",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a63cbe769b289c14",
+        "type": "function",
+        "z": "5e3bd47c97ad722a",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 320,
+        "wires": [
+            [
+                "fa42f04b8bd1914e",
+                "763e3994746d6a66"
+            ]
+        ]
+    },
+    {
+        "id": "3b8960fb90cb4543",
+        "type": "mongodb out",
+        "z": "caf9b1d53366b064",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area5 (save)",
+        "collection": "Area5",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 630,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9320c0c69431ea88",
+        "type": "mongodb in",
+        "z": "caf9b1d53366b064",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area5 data",
+        "collection": "Area5",
+        "operation": "find",
+        "x": 310,
+        "y": 300,
+        "wires": [
+            [
+                "ec63c79407e97599"
+            ]
+        ]
+    },
+    {
+        "id": "37e538e5e984f8d8",
+        "type": "mqtt in",
+        "z": "caf9b1d53366b064",
+        "name": "Sensor5",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f13984/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 460,
+        "wires": [
+            [
+                "b503e9a9ed7bd092",
+                "c0aea88469911676"
+            ]
+        ]
+    },
+    {
+        "id": "15c69d5e572389de",
+        "type": "http response",
+        "z": "caf9b1d53366b064",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b503e9a9ed7bd092",
+        "type": "debug",
+        "z": "caf9b1d53366b064",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "c0aea88469911676",
+        "type": "function",
+        "z": "caf9b1d53366b064",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 5\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations.user.latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations.user.longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "93d4e79a6fb49051",
+                "3b8960fb90cb4543"
+            ]
+        ]
+    },
+    {
+        "id": "93d4e79a6fb49051",
+        "type": "debug",
+        "z": "caf9b1d53366b064",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "783e3da1ad25d853",
+        "type": "debug",
+        "z": "caf9b1d53366b064",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "ec63c79407e97599",
+        "type": "function",
+        "z": "caf9b1d53366b064",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 300,
+        "wires": [
+            [
+                "15c69d5e572389de",
+                "783e3da1ad25d853"
+            ]
+        ]
+    },
+    {
+        "id": "158e9c459025ef25",
+        "type": "http in",
+        "z": "caf9b1d53366b064",
+        "name": "(get) data5",
+        "url": "/data5",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 300,
+        "wires": [
+            [
+                "9320c0c69431ea88"
+            ]
+        ]
+    },
+    {
+        "id": "72dc766e61d16dbe",
+        "type": "mongodb out",
+        "z": "94a313103002b37d",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area6 (save)",
+        "collection": "Area6",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 630,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "3d4edce7c578d92f",
+        "type": "mongodb in",
+        "z": "94a313103002b37d",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area6 data",
+        "collection": "Area6",
+        "operation": "find",
+        "x": 310,
+        "y": 400,
+        "wires": [
+            [
+                "65bae0d3860cfe4d"
+            ]
+        ]
+    },
+    {
+        "id": "352c0e694d707ed7",
+        "type": "http in",
+        "z": "94a313103002b37d",
+        "name": "(get) data6",
+        "url": "/data6",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 400,
+        "wires": [
+            [
+                "3d4edce7c578d92f"
+            ]
+        ]
+    },
+    {
+        "id": "1359c69842f1da89",
+        "type": "mqtt in",
+        "z": "94a313103002b37d",
+        "name": "Sensor6",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f17351/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 560,
+        "wires": [
+            [
+                "f629f17a945d1208",
+                "b218be1176f58ef9"
+            ]
+        ]
+    },
+    {
+        "id": "2c299c0722da5149",
+        "type": "http response",
+        "z": "94a313103002b37d",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "b218be1176f58ef9",
+        "type": "debug",
+        "z": "94a313103002b37d",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "f629f17a945d1208",
+        "type": "function",
+        "z": "94a313103002b37d",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 6\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 560,
+        "wires": [
+            [
+                "e9e49b51b1b3eae9",
+                "72dc766e61d16dbe"
+            ]
+        ]
+    },
+    {
+        "id": "e9e49b51b1b3eae9",
+        "type": "debug",
+        "z": "94a313103002b37d",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "d56a80fcf2e3f7e9",
+        "type": "debug",
+        "z": "94a313103002b37d",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "65bae0d3860cfe4d",
+        "type": "function",
+        "z": "94a313103002b37d",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 400,
+        "wires": [
+            [
+                "2c299c0722da5149",
+                "d56a80fcf2e3f7e9"
+            ]
+        ]
+    },
+    {
+        "id": "0c503c6edbe941af",
+        "type": "mongodb out",
+        "z": "17d848535538c0fe",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area7 (save)",
+        "collection": "Area7",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 610,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "4436c9d7cff2fb44",
+        "type": "mongodb in",
+        "z": "17d848535538c0fe",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area7 data",
+        "collection": "Area7",
+        "operation": "find",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "b038f902e96987c8"
+            ]
+        ]
+    },
+    {
+        "id": "afa2cb6856720660",
+        "type": "http in",
+        "z": "17d848535538c0fe",
+        "name": "(get) data7",
+        "url": "/data7",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 260,
+        "wires": [
+            [
+                "4436c9d7cff2fb44"
+            ]
+        ]
+    },
+    {
+        "id": "7fa1977ecc2b81bd",
+        "type": "mqtt in",
+        "z": "17d848535538c0fe",
+        "name": "Sensor7",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f18d80/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 420,
+        "wires": [
+            [
+                "ef64e00e6228cf53",
+                "4fecf5dbd419a8cc"
+            ]
+        ]
+    },
+    {
+        "id": "d7363dad06cd9faf",
+        "type": "http response",
+        "z": "17d848535538c0fe",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "4fecf5dbd419a8cc",
+        "type": "debug",
+        "z": "17d848535538c0fe",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "ef64e00e6228cf53",
+        "type": "function",
+        "z": "17d848535538c0fe",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 7\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 420,
+        "wires": [
+            [
+                "b3a440825ffb9f33",
+                "0c503c6edbe941af"
+            ]
+        ]
+    },
+    {
+        "id": "b3a440825ffb9f33",
+        "type": "debug",
+        "z": "17d848535538c0fe",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "e31cad78e76b1960",
+        "type": "debug",
+        "z": "17d848535538c0fe",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b038f902e96987c8",
+        "type": "function",
+        "z": "17d848535538c0fe",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 260,
+        "wires": [
+            [
+                "d7363dad06cd9faf",
+                "e31cad78e76b1960"
+            ]
+        ]
+    },
+    {
+        "id": "3794890372d9abbd",
+        "type": "mongodb out",
+        "z": "76edc5fab097c7f1",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area8 (save)",
+        "collection": "Area8",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 630,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "97876d4a65730412",
+        "type": "mongodb in",
+        "z": "76edc5fab097c7f1",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area8 data",
+        "collection": "Area8",
+        "operation": "find",
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "67addf8b02201530"
+            ]
+        ]
+    },
+    {
+        "id": "28f060585113243d",
+        "type": "http in",
+        "z": "76edc5fab097c7f1",
+        "name": "(get) data8",
+        "url": "/data8",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 280,
+        "wires": [
+            [
+                "97876d4a65730412"
+            ]
+        ]
+    },
+    {
+        "id": "9385b5326cc46f1e",
+        "type": "mqtt in",
+        "z": "76edc5fab097c7f1",
+        "name": "Sensor8",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f1ab2e /up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 440,
+        "wires": [
+            [
+                "3b6153d12c1786fd",
+                "285199cdb20cab39"
+            ]
+        ]
+    },
+    {
+        "id": "6760d952dbc20c99",
+        "type": "http response",
+        "z": "76edc5fab097c7f1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "3b6153d12c1786fd",
+        "type": "debug",
+        "z": "76edc5fab097c7f1",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "285199cdb20cab39",
+        "type": "function",
+        "z": "76edc5fab097c7f1",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 8\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 440,
+        "wires": [
+            [
+                "ec59635d8e0d99eb",
+                "3794890372d9abbd"
+            ]
+        ]
+    },
+    {
+        "id": "ec59635d8e0d99eb",
+        "type": "debug",
+        "z": "76edc5fab097c7f1",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "fdf5f21d661a7593",
+        "type": "debug",
+        "z": "76edc5fab097c7f1",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "67addf8b02201530",
+        "type": "function",
+        "z": "76edc5fab097c7f1",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 280,
+        "wires": [
+            [
+                "6760d952dbc20c99",
+                "fdf5f21d661a7593"
+            ]
+        ]
+    },
+    {
+        "id": "b7af3d549e7d6655",
+        "type": "mongodb out",
+        "z": "5bf7c85ec0a3b433",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area9 (save)",
+        "collection": "Area9",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 610,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f8594987f36d6c33",
+        "type": "mongodb in",
+        "z": "5bf7c85ec0a3b433",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area9 data",
+        "collection": "Area9",
+        "operation": "find",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "d687a2d684d7223b"
+            ]
+        ]
+    },
+    {
+        "id": "e75b5d693622c41a",
+        "type": "http in",
+        "z": "5bf7c85ec0a3b433",
+        "name": "(get) data9",
+        "url": "/data9",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 260,
+        "wires": [
+            [
+                "f8594987f36d6c33"
+            ]
+        ]
+    },
+    {
+        "id": "20da59d83e67f052",
+        "type": "mqtt in",
+        "z": "5bf7c85ec0a3b433",
+        "name": "Sensor9",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f1911b/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 420,
+        "wires": [
+            [
+                "ccf3e93e7ef971a3",
+                "b7812ecbf19b4f88"
+            ]
+        ]
+    },
+    {
+        "id": "bf754a95e889ac54",
+        "type": "http response",
+        "z": "5bf7c85ec0a3b433",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ccf3e93e7ef971a3",
+        "type": "debug",
+        "z": "5bf7c85ec0a3b433",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "63d3e0bdeb9c157a",
+        "type": "debug",
+        "z": "5bf7c85ec0a3b433",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "816c671484f38de7",
+        "type": "debug",
+        "z": "5bf7c85ec0a3b433",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "d687a2d684d7223b",
+        "type": "function",
+        "z": "5bf7c85ec0a3b433",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 260,
+        "wires": [
+            [
+                "bf754a95e889ac54",
+                "816c671484f38de7"
+            ]
+        ]
+    },
+    {
+        "id": "b7812ecbf19b4f88",
+        "type": "function",
+        "z": "5bf7c85ec0a3b433",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 9\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "b7af3d549e7d6655",
+                "63d3e0bdeb9c157a"
+            ]
+        ]
+    },
+    {
+        "id": "67bf4fd8e30e6642",
+        "type": "mongodb out",
+        "z": "a7b5cc95f8620d66",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area10 (save)",
+        "collection": "Area10",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 640,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "6777c9f9a66141e4",
+        "type": "mongodb in",
+        "z": "a7b5cc95f8620d66",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area10 data",
+        "collection": "Area10",
+        "operation": "find",
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "9b281f93afc7c6f0"
+            ]
+        ]
+    },
+    {
+        "id": "161bdfc13e6398af",
+        "type": "http in",
+        "z": "a7b5cc95f8620d66",
+        "name": "(get) data10",
+        "url": "/data10",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "6777c9f9a66141e4"
+            ]
+        ]
+    },
+    {
+        "id": "3fe0c5c0ed992d75",
+        "type": "mqtt in",
+        "z": "a7b5cc95f8620d66",
+        "name": "Sensor10",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f13799/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 420,
+        "wires": [
+            [
+                "80571b26d5f4a872",
+                "d7b8bffc66c7ce28"
+            ]
+        ]
+    },
+    {
+        "id": "58e0f95cbb66d03f",
+        "type": "http response",
+        "z": "a7b5cc95f8620d66",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "80571b26d5f4a872",
+        "type": "debug",
+        "z": "a7b5cc95f8620d66",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "d7b8bffc66c7ce28",
+        "type": "function",
+        "z": "a7b5cc95f8620d66",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 1O\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 420,
+        "wires": [
+            [
+                "db3e99c406b20ae4",
+                "67bf4fd8e30e6642"
+            ]
+        ]
+    },
+    {
+        "id": "db3e99c406b20ae4",
+        "type": "debug",
+        "z": "a7b5cc95f8620d66",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "aeefd51509322b7d",
+        "type": "debug",
+        "z": "a7b5cc95f8620d66",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9b281f93afc7c6f0",
+        "type": "function",
+        "z": "a7b5cc95f8620d66",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 260,
+        "wires": [
+            [
+                "58e0f95cbb66d03f",
+                "aeefd51509322b7d"
+            ]
+        ]
+    },
+    {
+        "id": "7ced40a9a78465c3",
+        "type": "mongodb out",
+        "z": "7573a1fd531a158e",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area11 (save)",
+        "collection": "Area11",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 620,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "f8b72089c81aec7e",
+        "type": "mongodb in",
+        "z": "7573a1fd531a158e",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area11 data",
+        "collection": "Area11",
+        "operation": "find",
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "c82f5ba1f05924f1"
+            ]
+        ]
+    },
+    {
+        "id": "46d99c50d496660f",
+        "type": "http in",
+        "z": "7573a1fd531a158e",
+        "name": "(get) data11",
+        "url": "/data11",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 320,
+        "wires": [
+            [
+                "f8b72089c81aec7e"
+            ]
+        ]
+    },
+    {
+        "id": "55111c62d4277eda",
+        "type": "mqtt in",
+        "z": "7573a1fd531a158e",
+        "name": "Sensor11",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f158fd/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 480,
+        "wires": [
+            [
+                "fe907df87330a59d",
+                "ab100125290ca4bc"
+            ]
+        ]
+    },
+    {
+        "id": "07454c669ca661a4",
+        "type": "http response",
+        "z": "7573a1fd531a158e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "fe907df87330a59d",
+        "type": "debug",
+        "z": "7573a1fd531a158e",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "ab100125290ca4bc",
+        "type": "function",
+        "z": "7573a1fd531a158e",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 11\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 480,
+        "wires": [
+            [
+                "a1694cb2f1b71a4f",
+                "7ced40a9a78465c3"
+            ]
+        ]
+    },
+    {
+        "id": "a1694cb2f1b71a4f",
+        "type": "debug",
+        "z": "7573a1fd531a158e",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "4e8ace50f46adf09",
+        "type": "debug",
+        "z": "7573a1fd531a158e",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "c82f5ba1f05924f1",
+        "type": "function",
+        "z": "7573a1fd531a158e",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 320,
+        "wires": [
+            [
+                "07454c669ca661a4",
+                "4e8ace50f46adf09"
+            ]
+        ]
+    },
+    {
+        "id": "b0cd6338440e75e0",
+        "type": "mongodb out",
+        "z": "cba21b1d36b4de43",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area12 (save)",
+        "collection": "Area12",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 640,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9167dee2faa9d151",
+        "type": "mongodb in",
+        "z": "cba21b1d36b4de43",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area12 data",
+        "collection": "Area12",
+        "operation": "find",
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "68092df4fc71b9ea"
+            ]
+        ]
+    },
+    {
+        "id": "c489a9b1491e5b37",
+        "type": "http in",
+        "z": "cba21b1d36b4de43",
+        "name": "(get) data12",
+        "url": "/data12",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "9167dee2faa9d151"
+            ]
+        ]
+    },
+    {
+        "id": "21dc8798549b27dd",
+        "type": "mqtt in",
+        "z": "cba21b1d36b4de43",
+        "name": "Sensor12",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b0020d4af /up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 480,
+        "wires": [
+            [
+                "a5dfece080727b57",
+                "bed09b44b9850160"
+            ]
+        ]
+    },
+    {
+        "id": "6103c97b7b3f4d96",
+        "type": "http response",
+        "z": "cba21b1d36b4de43",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "bed09b44b9850160",
+        "type": "debug",
+        "z": "cba21b1d36b4de43",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a5dfece080727b57",
+        "type": "function",
+        "z": "cba21b1d36b4de43",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 12\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 480,
+        "wires": [
+            [
+                "b5a1ef9f5d957b58",
+                "b0cd6338440e75e0"
+            ]
+        ]
+    },
+    {
+        "id": "b5a1ef9f5d957b58",
+        "type": "debug",
+        "z": "cba21b1d36b4de43",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d9353e259d331015",
+        "type": "debug",
+        "z": "cba21b1d36b4de43",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "68092df4fc71b9ea",
+        "type": "function",
+        "z": "cba21b1d36b4de43",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 320,
+        "wires": [
+            [
+                "6103c97b7b3f4d96",
+                "d9353e259d331015"
+            ]
+        ]
+    },
+    {
+        "id": "af25432107e30c47",
+        "type": "mongodb out",
+        "z": "51f48c99c51474e3",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area13 (save)",
+        "collection": "Area13",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 640,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a5820072fd1088e2",
+        "type": "mongodb in",
+        "z": "51f48c99c51474e3",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area13 data",
+        "collection": "Area13",
+        "operation": "find",
+        "x": 350,
+        "y": 280,
+        "wires": [
+            [
+                "f6314dee1824669a"
+            ]
+        ]
+    },
+    {
+        "id": "0f0abce02330ba66",
+        "type": "http in",
+        "z": "51f48c99c51474e3",
+        "name": "(get) data13",
+        "url": "/data13",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "a5820072fd1088e2"
+            ]
+        ]
+    },
+    {
+        "id": "8b6b139bb0bd5333",
+        "type": "mqtt in",
+        "z": "51f48c99c51474e3",
+        "name": "Sensor13",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b00f117b2/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 440,
+        "wires": [
+            [
+                "88d67532081394bf",
+                "41fbd408e93fda6b"
+            ]
+        ]
+    },
+    {
+        "id": "bf2f54717408d295",
+        "type": "http response",
+        "z": "51f48c99c51474e3",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "41fbd408e93fda6b",
+        "type": "debug",
+        "z": "51f48c99c51474e3",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "88d67532081394bf",
+        "type": "function",
+        "z": "51f48c99c51474e3",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 13\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "067569658ed9f1c8",
+                "af25432107e30c47"
+            ]
+        ]
+    },
+    {
+        "id": "067569658ed9f1c8",
+        "type": "debug",
+        "z": "51f48c99c51474e3",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "5243989cc2e10dd6",
+        "type": "debug",
+        "z": "51f48c99c51474e3",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "f6314dee1824669a",
+        "type": "function",
+        "z": "51f48c99c51474e3",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 280,
+        "wires": [
+            [
+                "bf2f54717408d295",
+                "5243989cc2e10dd6"
+            ]
+        ]
+    },
+    {
+        "id": "838c7b0c08b56dca",
+        "type": "mongodb out",
+        "z": "e7bfdaac2eb60910",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area14 (save)",
+        "collection": "Area14",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 640,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f9ad1e2deb6bde21",
+        "type": "mongodb in",
+        "z": "e7bfdaac2eb60910",
+        "mongodb": "2444635c860dbf48",
+        "name": "Area14 data",
+        "collection": "Area14",
+        "operation": "find",
+        "x": 290,
+        "y": 300,
+        "wires": [
+            [
+                "327d2c1be2fb9868"
+            ]
+        ]
+    },
+    {
+        "id": "b9be0e24f85d995e",
+        "type": "http in",
+        "z": "e7bfdaac2eb60910",
+        "name": "(get) data14",
+        "url": "/data14",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 300,
+        "wires": [
+            [
+                "f9ad1e2deb6bde21"
+            ]
+        ]
+    },
+    {
+        "id": "88fc0d471b3ee834",
+        "type": "mqtt in",
+        "z": "e7bfdaac2eb60910",
+        "name": "Sensor14",
+        "topic": "v3/zanzibar@ttn/devices/eui-0004a30b0020bb1b/up",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "8042d8a1eebf04bf",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 460,
+        "wires": [
+            [
+                "e0dabec115176d27",
+                "08780e9e371a4061"
+            ]
+        ]
+    },
+    {
+        "id": "618cc173dcb17d9f",
+        "type": "http response",
+        "z": "e7bfdaac2eb60910",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "08780e9e371a4061",
+        "type": "debug",
+        "z": "e7bfdaac2eb60910",
+        "name": "RAW sensor data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "e0dabec115176d27",
+        "type": "function",
+        "z": "e7bfdaac2eb60910",
+        "name": "",
+        "func": "\nvar data = msg.payload.uplink_message.decoded_payload;\nvar json = \n{\n\t\tName:data.name = \"Node 14\",\n\t\tLatitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].latitude,\n\t\tLongtitude:data.location = msg.payload.uplink_message.locations[\"frm-payload\"].longitude,\n        battery: data.battery,\n        CO2: data.co2,\n        humidity: data.humidity,\n        pm10: data.pm10,\n        pm25: data.pm25,\n        pressure: data.pressure,\n        salinity: data.salinity,\n        temp: data.temp,\n        tvox: data.tvoc,\n\t\ttime: data.datetime = msg.payload.received_at\n}\nmsg.payload = json\n\t\treturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "99c9823f0f62802c",
+                "838c7b0c08b56dca"
+            ]
+        ]
+    },
+    {
+        "id": "99c9823f0f62802c",
+        "type": "debug",
+        "z": "e7bfdaac2eb60910",
+        "name": "Parsed Sensor Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "45ac6175391d11ca",
+        "type": "debug",
+        "z": "e7bfdaac2eb60910",
+        "name": "database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "327d2c1be2fb9868",
+        "type": "function",
+        "z": "e7bfdaac2eb60910",
+        "name": "",
+        "func": "var data = msg.payload\nvar latest = msg.payload[data.length-1]\nmsg.payload = latest\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 300,
+        "wires": [
+            [
+                "618cc173dcb17d9f",
+                "45ac6175391d11ca"
+            ]
+        ]
+    }
+]
