@@ -9,7 +9,7 @@ var optionsGET = {
     method: "GET",
     url: "https://eu1.cloud.thethings.network/api/v3/applications/zanzibar/devices?field_mask=name",
     headers: {
-        Authorization: "Bearer NNSXS.A3DRB5OD45LF6S2HFD6ZDUWB6XCINRX22LPWFDI.ZFMZBEA5WNAPPBPBDGN7E4P2GPEOTOATPMTHB3Y5Y3E2GYHF6CFQ",
+        Authorization: "Bearer API_KEY_FROM_TTN",
     },
 };
 
@@ -37,7 +37,7 @@ function make_json(name, id) {
 function send_data(data) {
     var optionsPOST = {
         'method': 'POST',
-        'url': 'http://159.223.209.125:1880/flow',
+        'url': 'http://NODERED_IP/flow',
         'headers': {
             'Content-Type': 'application/json'
         },
@@ -251,6 +251,10 @@ const data = {
             willPayload: "",
             willMsg: {},
             sessionExpiry: "",
+            credentials: {
+                user: "zanzibar@ttn",
+                password: "API_KEY_FROM_TTN"
+            }
         },
     ],
 };
