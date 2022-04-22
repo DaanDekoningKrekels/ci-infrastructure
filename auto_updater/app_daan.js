@@ -5,12 +5,13 @@
 "use strict";
 let request = require("request");
 
-const token = ""; // Change with your API token
+const ttn_token = ""; // Change with your API token
+const mqtt_token = ""; // Change with your MQTT token
 const application_name = "zanzibar";
 
-getAllDevices(token, application_name);
+getAllDevices(application_name, ttn_token, mqtt_token);
 
-function getAllDevices(token, application_name) {
+function getAllDevices(token, application_name, mqtt_token) {
   /* param: token Bearer token from TTN
    * param: application_name Name of TTN application where you want the devices from
    */
@@ -34,6 +35,7 @@ function getAllDevices(token, application_name) {
       to_post = to_post.replace(/_NR_/g, device_nr); // Put the device number everywhere on the right place
       to_post = to_post.replace(/_EUI_/g, String(device.ids.device_id)); // Put the device EUI everywhere on the right place
       to_post = to_post.replace(/_application_name_/g, application_name); // Put the application_name everywhere on the right place
+      to_post = to_post.replace(/_mqtt-token_/g, mqtt_token); // Put the mqtt_token everywhere on the right place
       //   console.log(JSON.parse(to_post));
       postDevice(to_post); // Make a post request for every device
     }
@@ -227,7 +229,7 @@ const data = {
     {
       id: "_EUI_.13",
       type: "mqtt-broker",
-      name: "Sensoren",
+      name: "_application_name_",
       broker: "eu1.cloud.thethings.network",
       port: "1883",
       clientid: "",
@@ -249,6 +251,10 @@ const data = {
       willPayload: "",
       willMsg: {},
       sessionExpiry: "",
+      credentials: {
+        user: "_application_name_@ttn",
+        password: "_mqtt-token_",
+      },
     },
   ],
 };
