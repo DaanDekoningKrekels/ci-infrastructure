@@ -1,0 +1,19 @@
+{
+  "name": "auto_updater",
+  "version": "1.0.0",
+  "description": "Auto update or initialise the Node-RED flows with TTN API.",
+  "main": "app_daan.js",
+  "scripts": {
+    "start": "node ./app_daan.js"
+  },
+  "keywords": [
+    "Node-RED",
+    "ci-infrastructure",
+    "TTN"
+  ],
+  "author": "Daan Dekoning Krekels",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
